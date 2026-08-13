@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>University of Averiá — Official</title>
+<meta name="description" content="Official fictional University of Averiá website and live campus news portal.">
+<style>
+:root{
+ --wine:#4a1719;--wine2:#671f22;--wine3:#351013;--green:#173b2a;--green2:#23503a;
+ --gold:#d7b46a;--gold2:#ead39a;--cream:#f7eedb;--paper:#fffaf0;
+ --ink:#291d18;--muted:#806c52;--line:#d7c49d;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+a{color:inherit;text-decoration:none}.top{background:var(--green);color:var(--gold2);height:34px;display:flex;align-items:center;justify-content:center;font:700 10px Arial;letter-spacing:.18em;text-transform:uppercase}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(120deg,var(--wine3),var(--wine));color:white;border-bottom:1px solid #d7b46a88;box-shadow:0 8px 28px #1b0b0b55}
+.nav{max-width:1240px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:55px;height:55px;object-fit:contain}.brand b{font-size:19px;display:block}.brand small{display:block;color:var(--gold2);font:9px Arial;letter-spacing:.14em;margin-top:3px}
+nav{display:flex;gap:22px;font:700 10px Arial;letter-spacing:.1em;text-transform:uppercase}nav a:hover{color:var(--gold2)}
+.livebar{background:#260c0f;color:#fff;display:flex;align-items:center;gap:12px;padding:9px 5vw;font:11px Arial;white-space:nowrap;overflow:hidden}.live{color:#fff;background:#b3262e;border-radius:3px;padding:4px 7px;font-weight:800;letter-spacing:.08em}.ticker{overflow:hidden;text-overflow:ellipsis}.ticker b{color:var(--gold2)}
+.hero{background:radial-gradient(circle at 80% 20%,#d7b46a2b,transparent 24%),linear-gradient(125deg,var(--wine),#5a2020 58%,var(--green));color:white;padding:72px 6vw 82px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;border:1px solid #d7b46a55;inset:18px;pointer-events:none}.hero:after{inset:28px;border-color:#d7b46a2b}
+.heroIn{max-width:1240px;margin:auto;position:relative;z-index:2}.eyebrow{color:var(--gold2);font:700 11px Arial;letter-spacing:.22em;text-transform:uppercase}.hero h1{font-size:clamp(45px,7vw,88px);line-height:.91;margin:16px 0 20px;font-weight:700}.hero h1 em{color:var(--gold2)}.hero p{max-width:720px;font-size:18px;line-height:1.75;color:#f7ead3}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.btn{padding:13px 19px;border:1px solid var(--gold);background:var(--gold);color:var(--green);font:800 10px Arial;letter-spacing:.12em;text-transform:uppercase}.btn.alt{background:transparent;color:var(--gold2)}
+.notice{max-width:1180px;margin:-26px auto 30px;background:var(--paper);border:1px solid var(--gold);padding:14px 18px;font:11px/1.6 Arial;position:relative;z-index:5;box-shadow:0 16px 40px #30130c20}.notice strong{color:var(--wine)}
+main{max-width:1240px;margin:auto;padding:10px 24px 80px}.sectionHead{display:flex;justify-content:space-between;align-items:end;border-bottom:2px solid var(--gold);padding-bottom:10px;margin:34px 0 22px}.sectionHead h2{margin:0;color:var(--wine);font-size:32px}.sectionHead span{font:10px Arial;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.breaking{display:grid;grid-template-columns:1.8fr 1fr;gap:20px}.feature,.sideCard,.newsCard,.calendar,.admission{background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 25px #3b25101a}.feature .image{height:270px;background:linear-gradient(135deg,var(--wine2),var(--green));display:flex;align-items:end;padding:24px;color:var(--gold2);font-size:28px}.content{padding:22px}.tag{font:800 9px Arial;color:var(--green);letter-spacing:.15em;text-transform:uppercase}.feature h3{font-size:30px;line-height:1.1;margin:8px 0}.meta{font:10px Arial;color:#927b5c}.content p{font-size:14px;line-height:1.7;color:#5e4d3c}.side{display:grid;gap:20px}.sideCard .cap{height:105px;background:linear-gradient(135deg,var(--green),var(--wine2));padding:18px;color:var(--gold2);font-size:19px;display:flex;align-items:end}.sideCard h3{font-size:19px;margin:7px 0}
+.feed{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.newsCard{padding:18px;border-top:4px solid var(--wine)}.newsCard h3{font-size:20px;line-height:1.18;margin:8px 0}.newsCard p{font:13px/1.65 Arial;color:#5e5145}.badge{display:inline-block;padding:5px 7px;background:#eee2c7;color:var(--wine);font:800 8px Arial;letter-spacing:.1em;text-transform:uppercase}.badge.green{background:#dce9df;color:var(--green)}.badge.red{background:#f1d9d6;color:#7b2024}
+.liveFeed{background:var(--green);color:white;border:1px solid var(--gold);padding:20px}.liveFeedHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.liveFeedHead h3{margin:0;color:var(--gold2)}.dot{width:9px;height:9px;background:#e24b4b;border-radius:50%;display:inline-block;box-shadow:0 0 0 5px #e24b4b22}.feedItem{padding:13px 0;border-top:1px solid #d7b46a44;display:grid;grid-template-columns:70px 1fr;gap:10px}.feedItem time{color:var(--gold2);font:10px Arial}.feedItem strong{font-size:14px}.feedItem span{display:block;color:#e9dfce;font:11px/1.5 Arial;margin-top:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:var(--green);color:white;text-align:center;padding:20px;border:1px solid var(--gold)}.stat strong{display:block;color:var(--gold2);font-size:29px}.stat span{font:9px Arial;letter-spacing:.1em;text-transform:uppercase}
+.admissions{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.admission{padding:25px}.admission h3{font-size:25px;color:var(--wine);margin-top:0}.admission ul{padding-left:19px;line-height:1.9}.goldbox{background:var(--green);color:white;padding:22px;border:1px solid var(--gold)}.goldbox h3{color:var(--gold2);margin-top:0}.goldbox strong{font-size:27px;color:var(--gold2)}
+.calendar{padding:24px}.dates{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.date{padding:18px;background:#fff;border-left:4px solid var(--wine)}.date b{display:block;color:var(--wine);font-size:19px}.date span{font:11px/1.5 Arial;color:#695743}
+.quote{background:var(--wine);color:white;margin:45px 0;padding:40px;border-left:7px solid var(--gold);text-align:center}.quote p{font-size:25px;max-width:820px;margin:0 auto 12px;line-height:1.4}.quote small{font:9px Arial;color:var(--gold2);letter-spacing:.14em}
+footer{background:#260e10;color:#e9dbc0;padding:45px 6vw}.foot{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}.foot h3{color:var(--gold2)}.foot p,.foot li{font:12px/1.7 Arial;color:#cdbb98}.foot ul{list-style:none;padding:0}.disc{border-top:1px solid #d7b46a33;margin-top:25px;padding-top:14px;font:10px/1.6 Arial;color:#a99070}
+@media(max-width:850px){nav{display:none}.breaking,.admissions,.foot{grid-template-columns:1fr}.feed{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.dates{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.feed{grid-template-columns:1fr}.dates{grid-template-columns:1fr}.brand b{font-size:15px}.brand small{font-size:7px}.hero{padding-top:55px}}
+</style>
+</head>
+<body>
+<div class="top">UÁ · OFFICIAL UNIVERSITY PORTAL · KNOWLEDGE · CHARACTER · EXCELLENCE</div>
+<header><div class="nav">
+<a class="brand" href="#home"><img src="averia-logo.png" alt="University of Averiá emblem"><span><b>University of Averiá</b><small>OFFICIAL · UÁ CENTRAL ADMINISTRATION</small></span></a>
+<nav><a href="#news">News</a><a href="#students">Students</a><a href="#admissions">Admissions</a><a href="#calendar">Calendar</a><a href="#about">About UÁ</a></nav>
+</div></header>
+
+<div class="livebar"><span class="live">● UÁ LIVE</span><span class="ticker"><b id="clock">--:--</b> · <span id="tickerText">University of Averiá official news service is online.</span></span></div>
+
+<section class="hero" id="home"><div class="heroIn">
+<div class="eyebrow">The Averiá Chronicle · Official News</div>
+<h1>University of<br><em>Averiá</em></h1>
+<p>Selamat datang di portal resmi UÁ — pusat berita kampus, kehidupan mahasiswa, riset, penerimaan mahasiswa baru, dan pengumuman besar dari University of Averiá.</p>
+<div class="buttons"><a class="btn" href="#news">Latest News →</a><a class="btn alt" href="#admissions">Admissions 2027</a></div>
+</div></section>
+
+<div class="notice"><strong>FICTIONAL / IN-UNIVERSE NOTICE:</strong> University of Averiá, nama program, statistik, tokoh, penghargaan, dan berita di portal ini merupakan bagian dari dunia fiksi milik pembuat UÁ. Situs ini dibuat sebagai official website in-universe.</div>
+
+<main>
+<section id="news"><div class="sectionHead"><h2>Breaking & Latest</h2><span>24/7 UÁ Live News</span></div>
+<div class="breaking">
+<article class="feature"><div class="image">🔴 BREAKING · UÁ LIVE</div><div class="content"><span class="tag">University Announcement</span><h3>Annual 23-Language Examination Preparations Enter Final Academic Phase</h3><div class="meta">18 March Event · Official Academic Office</div><p>University of Averiá kembali mempersiapkan salah satu agenda akademik terbesar tahunannya: ujian 23 bahasa yang dimulai setiap 18 Maret dan berlangsung selama satu bulan penuh.</p></div></article>
+<div class="side">
+<article class="sideCard"><div class="cap">👑 ANNUAL EVENT</div><div class="content"><span class="tag">Admissions</span><h3>20 July: UÁ Annual Admissions Promotion Returns</h3><div class="meta">Admissions Office</div><p>Setiap 20 Juli, UÁ membuka pengumuman promosi pendaftaran tahunan beserta jalur dan persyaratan mahasiswa baru.</p></div></article>
+<article class="sideCard"><div class="cap">🌍 GLOBAL CAMPUS</div><div class="content"><span class="tag">International</span><h3>Students Prepare for UÁ Global Culture Week</h3><div class="meta">Student Affairs</div></div></article>
+</div></div></section>
+
+<section><div class="sectionHead"><h2>UÁ Live Feed</h2><span>Rolling fictional headlines</span></div>
+<div class="liveFeed"><div class="liveFeedHead"><h3><span class="dot"></span> LIVE NOW</h3><span id="liveDate" style="font:10px Arial;color:var(--gold2)"></span></div><div id="feed"></div></div></section>
+
+<section id="students"><div class="sectionHead"><h2>Student Life</h2><span>Inside UÁ</span></div>
+<div class="stats"><div class="stat"><strong>42</strong><span>Student Clubs</span></div><div class="stat"><strong>18</strong><span>Research Labs</span></div><div class="stat"><strong>23</strong><span>Exam Languages</span></div><div class="stat"><strong>1 Month</strong><span>Annual Exam Period</span></div></div>
+<div class="feed">
+<article class="newsCard"><span class="badge green">Fictional Good News</span><h3>UÁ Student Innovation Fund Opens New Micro-Grants</h3><p>Mahasiswa dapat mengajukan dukungan untuk proyek teknologi, budaya, riset, dan kegiatan sosial.</p></article>
+<article class="newsCard"><span class="badge green">Fictional Good News</span><h3>Royal Green Garden Becomes New Open-Air Study Space</h3><p>Ruang belajar terbuka bergaya kerajaan menjadi salah satu tempat favorit mahasiswa.</p></article>
+<article class="newsCard"><span class="badge">Academic</span><h3>Library Extends Night Study Hours During Examination Season</h3><p>Area baca malam dan ruang diskusi diperluas selama periode ujian tahunan.</p></article>
+</div></section>
+
+<section id="admissions"><div class="sectionHead"><h2>Admissions</h2><span>Annual promotion · Every 20 July</span></div>
+<div class="admissions">
+<div class="admission"><span class="tag">UÁ Annual Admissions Promotion</span><h3>New Student Registration</h3><p>Setiap tanggal <b>20 Juli</b>, University of Averiá menerbitkan paket informasi pendaftaran tahunan.</p>
+<ul><li>Formulir pendaftaran resmi UÁ</li><li>Ijazah / surat kelulusan</li><li>Kesanggupan tinggal dan belajar di UÁ</li><li>Nilai atau prestasi dengan standar tinggi</li><li>Pilihan jalur: Beasiswa, Nilai, dan Mandiri</li></ul>
+<a class="btn" href="#calendar">View UÁ Calendar</a></div>
+<div class="goldbox"><h3>Featured Annual Benefit</h3><p>Dalam lore UÁ, paket penyambutan mahasiswa baru dapat mencakup perangkat elektronik dan kendaraan dari mitra fiktif ZENBU.</p><strong>20 JUL</strong><p style="font-size:11px;color:#ead39a">ANNUAL ADMISSIONS DAY</p></div>
+</div></section>
+
+<section id="calendar"><div class="sectionHead"><h2>UÁ Annual Calendar</h2><span>Signature university events</span></div>
+<div class="calendar"><div class="dates">
+<div class="date"><b>18 MAR</b><span>Annual 23-Language Examination begins.</span></div>
+<div class="date"><b>18 MAR–18 APR</b><span>One-month examination period.</span></div>
+<div class="date"><b>20 JUL</b><span>Annual New Student Admissions Promotion.</span></div>
+<div class="date"><b>ALL YEAR</b><span>Research, student clubs, lectures and campus news.</span></div>
+</div></div></section>
+
+<div class="quote"><p>“With great power, comes great responsibility.”</p><small>THE AVERIÁ PRINCIPLE · UÁ FICTIONAL CAMPUS MOTTO</small></div>
+
+<section id="about"><div class="sectionHead"><h2>About UÁ</h2><span>University of Averiá</span></div>
+<div class="admission"><h3>A university built for a world of its own.</h3><p>University of Averiá adalah universitas fiktif dengan identitas akademik dan budaya yang terus berkembang. Portal ini dirancang sebagai pusat resmi in-universe untuk seluruh berita, pengumuman, kegiatan mahasiswa, kalender akademik, dan lore UÁ.</p></div></section>
+</main>
+
+<footer><div class="foot">
+<div><h3>University of Averiá</h3><p>UÁ Central Administration · Office of Student Affairs · The Averiá Chronicle</p></div>
+<div><h3>Official Portal</h3><ul><li><a href="#news">UÁ Live News</a></li><li><a href="#students">Student Affairs</a></li><li><a href="#admissions">Admissions</a></li><li><a href="#calendar">Academic Calendar</a></li></ul></div>
+<div><h3>UÁ Identity</h3><ul><li>Knowledge</li><li>Character</li><li>Excellence</li><li>Responsibility</li></ul></div>
+</div><div class="disc">This is an official-style fictional website for the University of Averiá worldbuilding project. All institution-specific facts and news are fictional and presented in-universe.</div></footer>
+
+<script>
+const headlines=[
+["20:21","UÁ Admissions Office prepares the annual 20 July promotion archive.","Admissions"],
+["19:58","Students begin preparations for the month-long 23-Language Examination.","Academic"],
+["19:31","Royal Green Garden records another busy evening of student study sessions.","Campus"],
+["18:46","UÁ Student Innovation Fund announces a new fictional micro-grant round.","Student Affairs"],
+["17:20","International Culture Week receives record fictional registrations.","International"],
+["16:05","UÁ Library extends evening study support during examination season.","Library"],
+["14:42","Averiá Research Forum announces its next student presentation series.","Research"],
+["12:18","University of Averiá publishes the latest fictional campus bulletin.","UÁ Live"]
+];
+const feed=document.getElementById("feed");
+feed.innerHTML=headlines.slice(0,6).map(x=>`<div class="feedItem"><time>${x[0]}</time><div><strong>${x[1]}</strong><span>${x[2]} · UÁ Official News</span></div></div>`).join("");
+function tick(){
+ const d=new Date(), hh=String(d.getHours()).padStart(2,"0"), mm=String(d.getMinutes()).padStart(2,"0");
+ document.getElementById("clock").textContent=hh+":"+mm;
+ document.getElementById("liveDate").textContent=d.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"});
+}
+tick();setInterval(tick,1000);
+let i=0;setInterval(()=>{i=(i+1)%headlines.length;const x=headlines[i];document.getElementById("tickerText").textContent=x[1]+" · "+x[2];},6500);
+</script>
+</body></html>
