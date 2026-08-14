@@ -1,12 +1,37 @@
-# University of Averiá — V5.0.1
+# University of Averiá — V6.0.0
 
-Perbaikan V5.0.1:
-- Logo UÁ dikembalikan dan sudah dikonversi menjadi PNG yang benar.
-- Semua foto memakai path relatif `./assets/...` agar aman untuk GitHub Pages.
-- Palet diperkuat: merah tua kerajaan, hijau tua kerajaan, dan emas.
-- Hero dibuat lebih elegan dengan lambang UÁ besar.
-- UÁ News dibuat lebih menonjol dengan LIVE NEWS FEED, ticker, kategori POSITIF/NEGATIF/NETRAL, dan countdown 5–30 menit.
-- Statistik mahasiswa tetap bergerak otomatis dan disimpan di localStorage.
-- Catatan mengenai sifat simulasi hanya ditampilkan satu kali di bagian bawah.
+## OPERATION V6.0.0 — Fix the Bug
 
-Upload `index.html` dan seluruh folder `assets/` ke root repository GitHub Pages.
+Perbaikan utama:
+- Memperbaiki bug JavaScript V5 yang membuat gambar/berita gagal dirender.
+- Seluruh gambar dan logo berada di folder `assets/` dan dipanggil dengan path relatif yang aman untuk GitHub Pages.
+- Mengembalikan identitas visual UÁ: merah tua kerajaan, hijau tua kerajaan, emas, ivory, serif elegan + glassmorphism iOS.
+- Animasi dibuat smooth dan playful tetapi tetap elegan.
+- Kategori internal berita tetap disimpan di sistem dan **tidak ditampilkan sebagai tulisan Positif/Negatif/Netral di halaman**.
+- Berita baru dijadwalkan acak setiap 5–30 menit.
+- Angka mahasiswa/pendaftar berubah otomatis dan disimpan di `localStorage`.
+- Logo UÁ dan seluruh foto sudah disertakan.
+
+## Upload ke GitHub
+
+Upload **isi folder ini** ke root repository (bukan folder pembungkusnya):
+
+```text
+index.html
+assets/
+  averia-logo.png
+  campus-gothic.jpg
+  campus-lake.jpg
+  campus-walkway.jpg
+  grand-library.jpg
+  historic-courtyard.jpg
+  incident-fire.jpg
+  library-books.jpg
+  library-study.jpg
+  student-cafe.jpg
+  student-life-pub.jpg
+```
+
+Pastikan `index.html` dan folder `assets` berada pada level yang sama.
+
+Semua berita di situs adalah simulasi/fiksi UÁ dan bukan sumber berita nyata.
