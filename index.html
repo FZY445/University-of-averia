@@ -1,1394 +1,338 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>University of Averiá — UÁ Chronicle</title>
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#481518"><meta name="description" content="The Averiá Chronicle — fictional University of Averiá campus news portal in Manchester.">
+<title>University of Averiá — The Averiá Chronicle V4.0.0</title>
 <style>
-:root{
-  --wine:#481518;
-  --wine2:#6a2428;
-  --green:#153b2b;
-  --gold:#d8b66d;
-  --cream:#f6eddc;
-  --paper:#fffaf1;
-  --ink:#2a201a;
-  --muted:#78654e;
-  --line:#d8c49b;
-  --soft:#efdba6;
-}
-
-*{box-sizing:border-box}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:Georgia,serif;
-}
-
-body.menu-open{
-  overflow:hidden;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
-
-.top{
-  background:var(--green);
-  color:var(--soft);
-  text-align:center;
-  padding:8px;
-  font:700 9px Arial;
-  letter-spacing:.18em;
-}
-
-.nav{
-  position:sticky;
-  top:0;
-  z-index:30;
-  color:#fff;
-  padding:12px 5vw;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:linear-gradient(110deg,#290b0e,var(--wine));
-  border-bottom:1px solid #d8b66d66;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.brand img{
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
-
-.brand b{
-  display:block;
-  font-size:18px;
-}
-
-.brand small{
-  color:var(--soft);
-  font:8px Arial;
-  letter-spacing:.12em;
-}
-
-nav{
-  display:flex;
-  gap:20px;
-  font:700 9px Arial;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-nav a:hover{
-  color:var(--soft);
-}
-
-/* MOBILE MENU BUTTON */
-
-.menu-toggle{
-  display:none;
-  width:54px;
-  height:54px;
-  border-radius:18px;
-  border:1px solid #efdba666;
-  background:#ffffff0d;
-  color:#fff;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  position:relative;
-  z-index:40;
-}
-
-.menu-toggle span{
-  display:block;
-  width:21px;
-  height:2px;
-  background:#fff8e8;
-  border-radius:5px;
-  transition:.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1){
-  transform:translateY(7px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2){
-  opacity:0;
-}
-
-.menu-toggle.active span:nth-child(3){
-  transform:translateY(-7px) rotate(-45deg);
-}
-
-/* MOBILE MENU PANEL */
-
-.mobile-menu{
-  position:fixed;
-  inset:0;
-  z-index:25;
-  padding:105px 24px 30px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(43,10,14,.98),
-      rgba(72,21,24,.97),
-      rgba(15,55,40,.98)
-    );
-  backdrop-filter:blur(26px);
-  -webkit-backdrop-filter:blur(26px);
-  transform:translateY(-105%);
-  transition:transform .45s cubic-bezier(.22,1,.36,1);
-  overflow:auto;
-}
-
-.mobile-menu.open{
-  transform:translateY(0);
-}
-
-.mobile-menu .menu-label{
-  color:var(--gold);
-  font:700 9px Arial;
-  letter-spacing:.2em;
-  margin:0 0 16px;
-}
-
-.mobile-menu a{
-  display:block;
-  padding:19px 6px;
-  color:#f4dfad;
-  font:700 12px Arial;
-  letter-spacing:.18em;
-  border-bottom:1px solid #d8b66d33;
-}
-
-.mobile-menu a:active{
-  background:#ffffff0a;
-}
-
-/* LIVE BAR */
-
-.live{
-  background:#240b0e;
-  color:white;
-  padding:9px 5vw;
-  font:11px Arial;
-}
-
-.live b{
-  color:var(--soft);
-}
-
-.pill{
-  background:#b52c31;
-  padding:4px 7px;
-  margin-right:8px;
-}
-
-/* HERO */
-
-.hero{
-  position:relative;
-  overflow:hidden;
-  color:white;
-  padding:76px 6vw 90px;
-
-  background:
-    radial-gradient(
-      circle at 82% 35%,
-      #d8b66d18 0,
-      transparent 25%
-    ),
-    linear-gradient(
-      125deg,
-      var(--wine),
-      #5b1d20 55%,
-      var(--green)
-    );
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  left:-10%;
-  right:-10%;
-  bottom:-80px;
-  height:190px;
-  background:var(--cream);
-  filter:blur(42px);
-  opacity:.95;
-}
-
-.heroIn{
-  position:relative;
-  z-index:2;
-  max-width:1200px;
-  margin:auto;
-}
-
-.heroWatermark{
-  position:absolute;
-  right:-10px;
-  top:-55px;
-  width:min(430px,55vw);
-  height:min(430px,55vw);
-  opacity:.10;
-  filter:blur(.4px) drop-shadow(0 20px 30px #0005);
-  object-fit:contain;
-  pointer-events:none;
-}
-
-.ey{
-  color:var(--soft);
-  font:700 10px Arial;
-  letter-spacing:.2em;
-}
-
-.hero h1{
-  font-size:clamp(44px,7vw,82px);
-  line-height:.9;
-  margin:15px 0;
-  max-width:760px;
-}
-
-.hero em{
-  color:var(--soft);
-}
-
-.hero p{
-  max-width:720px;
-  font-size:17px;
-  line-height:1.7;
-  color:#f4e7d1;
-}
-
-.heroFacts{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:22px 0;
-}
-
-.fact{
-  padding:9px 12px;
-  border:1px solid #efdba655;
-  background:#ffffff0b;
-  border-radius:999px;
-  font:700 8px Arial;
-  letter-spacing:.12em;
-  color:#f7e7bd;
-}
-
-.btn{
-  display:inline-block;
-  background:var(--gold);
-  color:var(--green);
-  padding:12px 16px;
-  font:800 9px Arial;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  border-radius:12px;
-}
-
-.btn.alt{
-  background:transparent;
-  color:var(--soft);
-  border:1px solid var(--gold);
-  margin-left:8px;
-}
-
-/* CONTENT */
-
-main{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 22px 70px;
-}
-
-.notice{
-  background:var(--paper);
-  border:1px solid var(--gold);
-  padding:13px;
-  margin:-25px auto 30px;
-  font:10px/1.6 Arial;
-  box-shadow:0 10px 25px #421c1018;
-  border-radius:16px;
-}
-
-.notice strong{
-  color:var(--wine);
-}
-
-.head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  border-bottom:2px solid var(--gold);
-  padding-bottom:9px;
-  margin:30px 0 18px;
-}
-
-.head h2{
-  margin:0;
-  color:var(--wine);
-  font-size:30px;
-}
-
-.head span{
-  font:9px Arial;
-  color:var(--muted);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-.grid2{
-  display:grid;
-  grid-template-columns:1.55fr .8fr;
-  gap:18px;
-}
-
-.box{
-  background:var(--paper);
-  border:1px solid var(--line);
-  box-shadow:0 8px 22px #43241512;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.img{
-  height:260px;
-  background:linear-gradient(135deg,var(--wine),var(--green));
-  display:flex;
-  align-items:end;
-  padding:20px;
-  color:var(--soft);
-  font-size:24px;
-}
-
-.body{
-  padding:20px;
-}
-
-.tag{
-  font:800 8px Arial;
-  color:var(--green);
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-
-.box h3{
-  font-size:28px;
-  line-height:1.1;
-  margin:8px 0;
-}
-
-.meta{
-  font:9px Arial;
-  color:#947d5d;
-}
-
-.body p,
-.article p{
-  font-size:13px;
-  line-height:1.7;
-  color:#62513f;
-}
-
-.side{
-  display:grid;
-  gap:18px;
-}
-
-.side .img{
-  height:105px;
-  font-size:16px;
-}
-
-.side h3{
-  font-size:18px;
-}
-  .feed{
-  background:var(--green);
-  color:white;
-  border:1px solid var(--gold);
-  padding:18px;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.feedhead{
-  display:flex;
-  justify-content:space-between;
-  color:var(--soft);
-}
-
-.item{
-  border-top:1px solid #d8b66d44;
-  padding:12px 0;
-  display:grid;
-  grid-template-columns:65px 1fr;
-  gap:8px;
-}
-
-.item time{
-  color:var(--soft);
-  font:9px Arial;
-}
-
-.item strong{
-  font-size:13px;
-}
-
-.item span{
-  display:block;
-  color:#e8decd;
-  font:10px Arial;
-  margin-top:3px;
-}
-
-.articles{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.article{
-  background:var(--paper);
-  border:1px solid var(--line);
-  padding:18px;
-  border-top:4px solid var(--wine);
-  border-radius:18px;
-}
-
-.article.neutral{
-  border-top-color:var(--green);
-}
-
-.article.bad{
-  border-top-color:#a96d34;
-}
-
-.badge{
-  display:inline-block;
-  padding:5px 7px;
-  background:#e0ebdf;
-  color:var(--green);
-  font:800 8px Arial;
-  border-radius:999px;
-}
-
-.badge.bad{
-  background:#efe0cf;
-  color:#8b5625;
-}
-
-.badge.neutral{
-  background:#e1e7e4;
-  color:var(--green);
-}
-
-.article h3{
-  font-size:19px;
-  line-height:1.15;
-}
-
-.calendar{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.date{
-  background:#fff;
-  border-left:4px solid var(--wine);
-  padding:16px;
-  border-radius:14px;
-}
-
-.date b{
-  display:block;
-  color:var(--wine);
-  font-size:18px;
-}
-
-.date span{
-  font:10px/1.5 Arial;
-  color:#695744;
-}
-
-.event{
-  margin-top:18px;
-  padding:24px;
-  border-radius:22px;
-  background:
-    linear-gradient(
-      135deg,
-      var(--wine),
-      #5d1f23 55%,
-      var(--green)
-    );
-  color:#fff;
-  border:1px solid var(--gold);
-  box-shadow:0 15px 35px #421c1018;
-}
-
-.event .ey{
-  display:block;
-}
-
-.event h3{
-  font-size:30px;
-  margin:8px 0;
-}
-
-.event strong{
-  color:var(--soft);
-}
-
-.admissions{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:18px;
-}
-
-.admit,
-.gold{
-  padding:22px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:20px;
-}
-
-.gold{
-  background:var(--green);
-  color:#fff;
-  border-color:var(--gold);
-}
-
-.gold h3{
-  color:var(--soft);
-}
-
-.gold strong{
-  font-size:32px;
-  color:var(--soft);
-}
-
-footer{
-  background:#260d10;
-  color:#dfd1b5;
-  padding:40px 6vw;
-}
-
-.foot{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:25px;
-}
-
-.foot h3{
-  color:var(--soft);
-}
-
-.foot p,
-.foot li{
-  font:11px/1.7 Arial;
-  color:#c7b492;
-}
-
-.foot ul{
-  list-style:none;
-  padding:0;
-}
-
-.disc{
-  border-top:1px solid #d8b66d33;
-  margin-top:20px;
-  padding-top:12px;
-  font:9px Arial;
-  color:#a99070;
-}
-
-::selection{
-  background:#d8b66d;
-  color:#2a201a;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:800px){
-  nav{
-    display:none;
-  }
-
-  .menu-toggle{
-    display:flex;
-  }
-
-  .grid2,
-  .admissions,
-  .foot{
-    grid-template-columns:1fr;
-  }
-
-  .articles{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .calendar{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .heroWatermark{
-    right:-70px;
-    top:-20px;
-    width:360px;
-    height:360px;
-    opacity:.08;
-  }
-}
-
-@media(max-width:520px){
-  .articles,
-  .calendar{
-    grid-template-columns:1fr;
-  }
-
-  .brand b{
-    font-size:15px;
-  }
-
-  .brand img{
-    width:42px;
-    height:42px;
-  }
-
-  .hero{
-    padding-top:58px;
-  }
-
-  .hero h1{
-    font-size:49px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .btn{
-    margin-bottom:8px;
-  }
-
-  .btn.alt{
-    margin-left:0;
-  }
+:root {
+  --wine: #481518; --wine2: #681f25; 
+  --green: #153b2b; --green2: #0d2c20; 
+  --gold: #d8b66d; --gold2: #efdba6; 
+  --paper: #f2f2f7; 
+  --paper2: #ffffff; 
+  --ink: #1c1c1e; 
+  --muted: #8e8e93; 
+  --line: #c6c6c8; 
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  
+  /* Animation Easings */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  margin: 0; 
+  background: var(--paper); 
+  color: var(--ink); 
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* Navigation */
+.topline { background: linear-gradient(90deg, var(--green2), var(--green), var(--green2)); color: var(--gold2); padding: 9px 16px; text-align: center; font: 700 9px/1.4 -apple-system, sans-serif; letter-spacing: .19em; text-transform: uppercase; }
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(0,0,0,0.1); color: var(--ink); padding: 12px max(22px, 5vw); display: flex; align-items: center; justify-content: space-between; transition: all 0.3s var(--ease-smooth); }
+.brand { display: flex; align-items: center; gap: 12px; transition: transform 0.3s var(--ease-spring); }
+.brand:hover { transform: scale(1.02); }
+.brandMark { width: 48px; height: 48px; border-radius: 12px; padding: 4px; object-fit: contain; background: var(--wine); }
+.brand b { display: block; font-size: clamp(17px, 2vw, 21px); font-weight: 700; letter-spacing: -.02em; }
+.brand small { display: block; margin-top: 3px; color: var(--muted); font: 700 8px -apple-system, sans-serif; letter-spacing: .14em; }
+.desktopNav { display: flex; gap: 24px; font: 700 10px -apple-system, sans-serif; letter-spacing: .11em; text-transform: uppercase; }
+.desktopNav a { opacity: .6; transition: .2s; position: relative; }
+.desktopNav a:hover { opacity: 1; color: var(--wine); }
+.menu { width: 46px; height: 46px; border: none; border-radius: 16px; background: rgba(0,0,0,0.05); color: var(--ink); font-size: 22px; display: none; }
+.livebar { background: var(--paper2); color: var(--ink); padding: 12px max(22px, 5vw); display: flex; align-items: center; gap: 14px; font: 12px -apple-system, sans-serif; border-bottom: 1px solid var(--line); }
+.pill { background: #ff3b30; color: white; border-radius: 999px; padding: 5px 11px; font-weight: 800; font-size: 10px; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(255, 59, 48, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+}
+
+/* Hero Section */
+.hero { position: relative; overflow: hidden; background: var(--wine); color: #fff; padding: 80px max(28px, 6vw) 80px; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; box-shadow: 0 20px 40px rgba(72, 21, 24, 0.2); }
+.heroInner { max-width: 1220px; margin: auto; position: relative; z-index: 2; }
+
+/* Floating Logo Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+.heroLogo { position: absolute; right: -5vw; top: -20px; width: min(500px, 50vw); opacity: .15; pointer-events: none; animation: float 8s ease-in-out infinite; }
+
+/* Fade Up Animations for Hero */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-1 { animation: fadeUp 1s var(--ease-smooth) 0.1s both; }
+.animate-2 { animation: fadeUp 1s var(--ease-smooth) 0.2s both; }
+.animate-3 { animation: fadeUp 1s var(--ease-smooth) 0.3s both; }
+.animate-4 { animation: fadeUp 1s var(--ease-smooth) 0.4s both; }
+
+.eyebrow { background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; display: inline-block; color: var(--gold2); font: 800 10px -apple-system, sans-serif; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 20px; }
+.hero h1 { max-width: 900px; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; font-weight: 800; letter-spacing: -.03em; margin: 0 0 20px; }
+.hero h1 em { color: var(--gold2); font-style: normal; font-weight: 600; }
+.heroDescBox { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.2); border-radius: 24px; padding: 30px; margin-top: 30px; max-width: 1000px; font-size: 16px; line-height: 1.6; color: #f2f2f7; transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-smooth); }
+.heroDescBox:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.15); }
+.heroDescBox p { margin: 0 0 15px 0; }
+.heroDescBox p:last-child { margin: 0; }
+
+.statsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 24px; }
+.statItem { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 18px; text-align: center; transition: all 0.3s var(--ease-spring); }
+.statItem:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+.statItem b { display: block; font-size: 20px; color: var(--gold2); margin-bottom: 5px; }
+.statItem span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; opacity: 0.8; }
+
+main { position: relative; z-index: 2; max-width: 1220px; margin: 40px auto 0; padding: 0 22px 80px; }
+
+/* Scroll Reveal Classes */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.sectionHead { margin: 60px 0 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.sectionHead h2 { margin: 0; color: var(--ink); font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.03em; }
+.sectionHead span { color: var(--muted); font: 700 11px -apple-system, sans-serif; letter-spacing: .1em; text-transform: uppercase; display: block; margin-top: 8px; }
+
+/* Interactive iOS Cards */
+.card { background: var(--paper2); border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-smooth); cursor: pointer; }
+.card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+.visual { position: relative; overflow: hidden; background: #e5e5ea; }
+.visual img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-smooth); }
+.card:hover .visual img { transform: scale(1.08); }
+.featureVisual { height: 260px; }
+.featureBody { padding: 24px; }
+.tag { display: inline-block; color: var(--wine); font: 800 10px -apple-system, sans-serif; letter-spacing: .1em; text-transform: uppercase; background: rgba(72, 21, 24, 0.1); padding: 6px 12px; border-radius: 12px; margin-bottom: 12px; }
+.card h3 { font-size: clamp(20px, 2.5vw, 24px); line-height: 1.2; margin: 0 0 10px; font-weight: 700; }
+.meta { font: 12px -apple-system, sans-serif; color: var(--muted); margin-bottom: 12px; }
+.card p { font-size: 15px; line-height: 1.5; color: #3a3a3c; margin: 0; }
+
+/* Widgets */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.rankCard { background: var(--paper2); border-radius: 28px; padding: 24px; box-shadow: var(--shadow); transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-smooth); cursor: pointer; }
+.rankCard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.rankCard.gold { background: linear-gradient(135deg, #fdfbf5, #f5ecd5); border: 1px solid #e2d2a4; }
+.rankCard.dark { background: var(--ink); color: white; }
+
+@keyframes pop {
+  0% { transform: scale(0.8) rotate(-10deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.rankCard:hover .rankBadge { animation: pop 0.4s var(--ease-spring) forwards; }
+.rankBadge { font-size: 32px; margin-bottom: 10px; display: inline-block; transition: transform 0.3s var(--ease-spring); }
+.rankCard h3 { font-size: 22px; margin: 0 0 5px; }
+.rankCard p { font-size: 14px; margin: 0; opacity: 0.8; }
+.score { font-size: 18px; font-weight: 800; color: var(--wine); margin-top: 15px; display: block; }
+.dark .score { color: var(--gold2); }
+
+.facultyList { background: var(--paper2); border-radius: 28px; padding: 24px; box-shadow: var(--shadow); margin-bottom: 20px; transition: transform 0.4s var(--ease-spring); }
+.facultyList:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.1); }
+.facultyList h3 { color: var(--wine); border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-top: 0; }
+.facultyList ul { list-style: none; padding: 0; margin: 0; }
+.facultyList li { padding: 12px 0; border-bottom: 1px solid #f2f2f7; font-size: 15px; display: flex; flex-direction: column; transition: background 0.2s, padding-left 0.2s; border-radius: 12px; }
+.facultyList li:hover { background: rgba(0,0,0,0.02); padding-left: 8px; }
+.facultyList li:last-child { border-bottom: none; }
+.facultyList li strong { color: var(--ink); }
+.facultyList li span { color: var(--muted); font-size: 13px; }
+
+/* Status Widget */
+.statusWidget { display: flex; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
+.statusBox { flex: 1; min-width: 200px; background: var(--paper2); border-radius: 24px; padding: 20px; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; transition: transform 0.4s var(--ease-spring); cursor: pointer; }
+.statusBox:hover { transform: translateY(-5px) scale(1.02); }
+.statusBox div { display: flex; flex-direction: column; }
+.statusBox b { font-size: 28px; font-weight: 800; color: var(--ink); }
+.statusBox span { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.statusIcon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; background: rgba(0,0,0,0.05); transition: transform 0.3s var(--ease-spring); }
+.statusBox:hover .statusIcon { transform: rotate(15deg) scale(1.1); }
+
+.stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.footer { background: var(--ink); color: #fff; padding: 60px 6vw; border-top-left-radius: 40px; border-top-right-radius: 40px; margin-top: 60px; }
+.foot { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; }
+.foot h3 { color: var(--gold2); }
+.foot p, .foot li { font: 14px/1.7 -apple-system, sans-serif; color: #aeaeb2; }
+.foot ul { list-style: none; padding: 0; }
+.foot li a { transition: color 0.2s; }
+.foot li a:hover { color: var(--gold2); }
+.disc { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 20px; font: 12px -apple-system, sans-serif; color: #8e8e93; text-align: center; }
+
+@media(max-width: 800px) {
+  .desktopNav { display: none; }
+  .menu { display: block; }
+  .hero { padding-top: 40px; border-radius: 0; box-shadow: none; }
+  .hero h1 { font-size: clamp(32px, 8vw, 50px); }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .foot { grid-template-columns: 1fr; }
+  .footer { border-radius: 0; }
 }
 </style>
 </head>
-
 <body>
-
-<div class="top">
-  UÁ · OFFICIAL FICTIONAL CAMPUS NEWS · THE AVERIÁ CHRONICLE
-</div>
-
+<div class="topline">UÁ · Official Fictional Campus News · The Averiá Chronicle</div>
 <header class="nav">
-
   <a class="brand" href="#home">
-    <img src="averia-logo.png" alt="University of Averiá emblem">
-    <span>
-      <b>University of Averiá</b>
-      <small>OFFICIAL · UÁ CENTRAL ADMINISTRATION</small>
-    </span>
+    <img class="brandMark" src="averia-logo.png" alt="University of Averiá emblem">
+    <span><b>University of Averiá</b><small>OFFICIAL · UÁ CENTRAL ADMINISTRATION</small></span>
   </a>
-
-  <nav>
+  <nav class="desktopNav">
+    <a href="#stats">Stats & Rankings</a>
+    <a href="#faculties">Faculties</a>
     <a href="#news">News</a>
-    <a href="#campus">Campus</a>
-    <a href="#admissions">Admissions</a>
-    <a href="#calendar">Calendar</a>
   </nav>
-
-  <button
-    class="menu-toggle"
-    id="menuToggle"
-    aria-label="Open menu"
-    aria-expanded="false"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
+  <button class="menu" id="menuOpen">☰</button>
 </header>
 
-<div
-  class="mobile-menu"
-  id="mobileMenu"
-  aria-hidden="true"
->
-  <p class="menu-label">UÁ · EXPLORE</p>
-
-  <a href="#home">HOME</a>
-  <a href="#news">NEWS</a>
-  <a href="#campus">CAMPUS</a>
-  <a href="#admissions">ADMISSIONS</a>
-  <a href="#calendar">CALENDAR</a>
-</div>
-
-<div class="live">
+<div class="livebar">
   <span class="pill">● UÁ LIVE</span>
   <b id="clock">--:--</b>
-  ·
-  <span id="ticker">Campus news service online.</span>
+  <span id="ticker">Sistem informasi kemahasiswaan online.</span>
 </div>
 
 <section class="hero" id="home">
-
-  <div class="heroIn">
-
-    <img
-      class="heroWatermark"
-      src="averia-logo.png"
-      alt=""
-      aria-hidden="true"
-    >
-
-    <div class="ey">
-      THE AVERIÁ CHRONICLE · V3.1.1
+  <div class="heroInner">
+    <img class="heroLogo" src="averia-logo.png" alt="" aria-hidden="true">
+    <div class="eyebrow animate-1">The Averiá Chronicle · V4.0.0</div>
+    <h1 class="animate-2">News, life &<br><em>the UÁ world.</em></h1>
+    
+    <div class="heroDescBox animate-3">
+      <p><b>Halo, Bonjour, Hello, Holà, Ciao!</b><br>Selamat datang di website resminya UNIVERSITY OF AVERIÁ (UÁ).</p>
+      <p>University of Averiá sudah berdiri sejak 7 September 1924 dan menjadi universitas peringkat pertama/terbaik sepanjang masa! Yang dipimpin langsung oleh keluarga bangsawan eropa, yang berlangsung turun temurun. Saat ini, UÁ di pimpin oleh <b>Prof. Dr. Ir. Muhammad Faizal Rahman, Lc., S.H., S.E., S.Kom., S.T., M.M., M.H., M.T., M.Sc., MBA, Ph.D, CFA, PMP, CCNA, CPA, CEO.</b></p>
+      <p>Terletak di Eropa, Britania Raya, Inggris, Manchester, dengan luas tanah mencapai 170 hektar. Tak ada yang bisa menghalangi pembuatan pendidikan!</p>
+      <p>Dengan membuat keberhasilan 100% dalam karir mahasiswa setelah lulus. Dari awal pertama kali kampus ini berdiri, sampai sekarang, keberhasilan dalam karir setiap mahasiswa mencapai 100%. Dan setiap mahasiswa, antara menjadi CEO perusahaannya sendiri, atau memiliki jabatan tinggi di suatu perusahaan.</p>
     </div>
 
-    <h1>
-      News, life &<br>
-      <em>the UÁ world.</em>
-    </h1>
-
-    <p>
-      University terbaik di dunia, yang sudah berjalan selama 102 tahun.
-      Di daerah Manchester.
-    </p>
-
-    <div class="heroFacts">
-      <span class="fact">FOUNDED 1924</span>
-      <span class="fact">102 YEARS</span>
-      <span class="fact">MANCHESTER</span>
+    <div class="statsGrid animate-4">
+      <div class="statItem"><b>200+</b><span>Gedung Fakultas</span></div>
+      <div class="statItem"><b>120</b><span>Asrama (Cowok)</span></div>
+      <div class="statItem"><b>120</b><span>Asrama (Cewek)</span></div>
+      <div class="statItem"><b>5.000</b><span>Advanced Dosen</span></div>
+      <div class="statItem"><b>34.000</b><span>Dosen Fakultas Biasa</span></div>
+      <div class="statItem"><b>100.000</b><span>Janitors (OB)</span></div>
+      <div class="statItem"><b>500.000</b><span>Guru (SMA, SMP, SD)</span></div>
+      <div class="statItem"><b>30</b><span>Sekolah Unggulan</span></div>
     </div>
-
-    <a class="btn" href="#news">Read latest</a>
-    <a class="btn alt" href="#admissions">Admissions</a>
-
   </div>
-
 </section>
 
 <main>
+  <section id="stats">
+    <div class="sectionHead reveal">
+      <h2>Student Admissions & Status</h2>
+      <span>Live Campus Data</span>
+    </div>
+    
+    <div class="statusWidget">
+      <div class="statusBox reveal" style="transition-delay: 0.1s;">
+        <div><span>Sedang Mendaftar</span><b>145.230</b></div>
+        <div class="statusIcon">📝</div>
+      </div>
+      <div class="statusBox reveal" style="transition-delay: 0.2s;">
+        <div><span>Sudah di-Approved</span><b>89.500</b></div>
+        <div class="statusIcon">✅</div>
+      </div>
+      <div class="statusBox reveal" style="background: var(--wine); color: white; transition-delay: 0.3s;">
+        <div><span style="color: rgba(255,255,255,0.7);">Jumlah Mahasiswa</span><b style="color: white;">600.000</b></div>
+        <div class="statusIcon" style="background: rgba(255,255,255,0.2);">🎓</div>
+      </div>
+    </div>
 
-<div class="notice">
-  <strong>FICTIONAL / IN-UNIVERSE:</strong>
-  University of Averiá dan seluruh berita, statistik, program,
-  penghargaan, tokoh, serta peristiwa spesifik UÁ di situs ini
-  adalah fiksi/worldbuilding.
-</div>
+    <div class="sectionHead reveal">
+      <h2>Mahasiswa Unggulan & Statistik</h2>
+      <span>Top Rankings di University of Averiá</span>
+    </div>
 
-<section id="news">
+    <h3 class="reveal" style="margin-bottom: 16px;">Inilah BEST OF THREE nya University of Averiá!</h3>
+    <div class="grid-3">
+      <div class="rankCard gold reveal" style="transition-delay: 0.1s;">
+        <span class="rankBadge">🥇</span>
+        <h3>Diamanta</h3>
+        <p>S1 Fakultas Hukum (FH)</p>
+        <span class="score">Skor: 1000,01/1000</span>
+      </div>
+      <div class="rankCard reveal" style="transition-delay: 0.2s;">
+        <span class="rankBadge">🥈</span>
+        <h3>A.Pr. Kaine Leon</h3>
+        <p>S2 Fakultas Bahasa dan Sastra (FBS)</p>
+        <span class="score">Skor: 999,82/1000</span>
+      </div>
+      <div class="rankCard reveal" style="transition-delay: 0.3s;">
+        <span class="rankBadge">🥉</span>
+        <h3>Vladimir Kevlar</h3>
+        <p>S1 Fakultas Kedokteran (FK)</p>
+        <span class="score">Skor: 998,32/1000</span>
+      </div>
+    </div>
 
-  <div class="head">
-    <h2>Latest News</h2>
-    <span>Positive · Neutral · Human stories</span>
-  </div>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="rankCard gold reveal" style="transition-delay: 0.1s;">
+        <span class="tag" style="background: rgba(0,0,0,0.05); margin-bottom: 8px;">Mahasiswa Terbaik</span>
+        <h3>A.Ma.Diamanta</h3>
+        <p>Dari Fakultas Hukum (FH)</p>
+        <span class="score">Rata-rata: 1000,01/1000</span>
+      </div>
+      <div class="rankCard dark reveal" style="transition-delay: 0.2s;">
+        <span class="tag" style="background: rgba(255,255,255,0.1); color: white; margin-bottom: 8px;">Mahasiswa Terburuk</span>
+        <h3 style="color: white;">Muhammad Rafandra Raditya</h3>
+        <p style="color: #aeaeb2;">Dari Fakultas Teknik (FT)</p>
+        <span class="score">Rata-rata: 957,098/1000</span>
+      </div>
+    </div>
+  </section>
 
-  <div class="grid2">
+  <section id="faculties">
+    <div class="sectionHead reveal">
+      <h2>Fakultas - Fakultas yang tersedia di UÁ</h2>
+      <span>Academic Departments</span>
+    </div>
 
-    <article class="box">
-
-      <div class="img">
-        🖼️ UÁ CAMPUS · FEATURED
+    <div class="grid-3">
+      <div class="facultyList reveal" style="transition-delay: 0.1s;">
+        <h3>Rumpun Kedokteran & Kesehatan</h3>
+        <ul>
+          <li><strong>Faculty of Medicine</strong><span>Fakultas Kedokteran</span></li>
+          <li><strong>Faculty of Dentistry</strong><span>Fakultas Kedokteran Gigi</span></li>
+          <li><strong>Faculty of Veterinary Medicine</strong><span>Fakultas Kedokteran Hewan</span></li>
+          <li><strong>School of Nursing and Midwifery</strong><span>Fakultas Keperawatan dan Kebidanan</span></li>
+          <li><strong>Faculty of Pharmacy</strong><span>Fakultas Farmasi</span></li>
+          <li><strong>School of Public Health</strong><span>Fakultas Kesehatan Masyarakat</span></li>
+          <li><strong>Faculty of Kinesiology</strong><span>Fakultas Kinesiologi</span></li>
+          <li><strong>School of Biomedical Sciences</strong><span>Fakultas Sains Biomedis</span></li>
+        </ul>
       </div>
 
-      <div class="body">
-
-        <span class="tag">Campus</span>
-
-        <h3>
-          Royal Green Garden Reopens After Evening Facilities Upgrade
-        </h3>
-
-        <div class="meta">
-          13 August 2026 · UÁ Facilities Office
-        </div>
-
-        <p>
-          Ruang terbuka favorit mahasiswa kembali digunakan setelah
-          perbaikan pencahayaan, meja belajar, dan jalur pejalan kaki.
-        </p>
-
+      <div class="facultyList reveal" style="transition-delay: 0.2s;">
+        <h3>Rumpun Pertanian & Lingkungan</h3>
+        <ul>
+          <li><strong>Faculty of Agricultural Sciences</strong><span>Fakultas Pertanian & Pangan</span></li>
+          <li><strong>School of Forestry</strong><span>Fakultas Kehutanan & Lingkungan</span></li>
+          <li><strong>Faculty of Marine Science</strong><span>Fakultas Ilmu Kelautan & Oseanografi</span></li>
+        </ul>
       </div>
 
-    </article>
-
-    <div class="side">
-
-      <article class="box">
-
-        <div class="img">
-          🏆 STUDENT ACHIEVEMENT
-        </div>
-
-        <div class="body">
-
-          <span class="tag">Achievement</span>
-
-          <h3>
-            UÁ Students Receive Fictional International Research Honors
-          </h3>
-
-          <div class="meta">
-            12 August 2026
-          </div>
-
-        </div>
-
-      </article>
-
-      <article class="box">
-
-        <div class="body">
-
-          <span class="tag">Campus Notice</span>
-
-          <h3>
-            Several Language Faculty Rooms Temporarily Closed for Repairs
-          </h3>
-
-          <div class="meta">
-            12 August 2026 · Facilities
-          </div>
-
-          <p>
-            Classes have been moved to alternate rooms while
-            maintenance continues.
-          </p>
-
-        </div>
-
-      </article>
-
+      <div class="facultyList reveal" style="transition-delay: 0.3s;">
+        <h3>Rumpun Seni & Arsitektur</h3>
+        <ul>
+          <li><strong>Faculty of Architecture</strong><span>Fakultas Arsitektur & Perencanaan</span></li>
+          <li><strong>School of Fine Arts and Design</strong><span>Fakultas Seni Rupa & Desain</span></li>
+          <li><strong>Faculty of Music and Arts</strong><span>Fakultas Musik & Pertunjukan</span></li>
+          <li><strong>School of Cinematic Arts</strong><span>Fakultas Seni Sinematik & Film</span></li>
+        </ul>
+      </div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-<section>
-
-  <div class="head">
-    <h2>UÁ Live Feed</h2>
-    <span>Updates every minute</span>
-  </div>
-
-  <div class="feed">
-
-    <div class="feedhead">
-      <b>● LIVE CAMPUS DESK</b>
-      <span id="date"></span>
+  <section id="news">
+    <div class="sectionHead reveal">
+      <h2>Latest News</h2>
+      <span>Positive · Neutral · Human stories</span>
     </div>
-
-    <div id="feed"></div>
-
-  </div>
-
-</section>
-<section id="campus">
-
-  <div class="head">
-    <h2>Campus Stories</h2>
-    <span>A fuller picture of UÁ</span>
-  </div>
-
-  <div class="articles">
-
-    <article class="article">
-      <span class="badge">Positive</span>
-      <h3>Student Innovation Fund Opens a New Micro-Grant Round</h3>
-      <p>
-        Mahasiswa dapat mengajukan dukungan fiktif untuk proyek teknologi,
-        budaya, riset, dan kegiatan sosial.
-      </p>
-      <div class="meta">11 Aug 2026</div>
-    </article>
-
-    <article class="article neutral">
-      <span class="badge neutral">Neutral</span>
-      <h3>23-Language Examination Briefing Schedule Published</h3>
-      <p>
-        Fakultas bahasa menerbitkan jadwal pengarahan menjelang ujian
-        tahunan yang dimulai setiap 18 Maret.
-      </p>
-      <div class="meta">10 Aug 2026</div>
-    </article>
-
-    <article class="article bad">
-      <span class="badge bad">Campus Notice</span>
-      <h3>Library Borrowing System Experiences a Short Technical Disruption</h3>
-      <p>
-        Sistem peminjaman sempat mengalami gangguan. Ruang baca tetap
-        dibuka dan layanan manual digunakan sementara.
-      </p>
-      <div class="meta">9 Aug 2026</div>
-    </article>
-
-    <article class="article">
-      <span class="badge">Positive</span>
-      <h3>New Night Study Hours Added During Examination Season</h3>
-      <p>
-        Area belajar malam diperpanjang untuk membantu mahasiswa
-        menghadapi periode akademik padat.
-      </p>
-      <div class="meta">8 Aug 2026</div>
-    </article>
-
-    <article class="article bad">
-      <span class="badge bad">Student Life</span>
-      <h3>Rain Forces Cancellation of One Outdoor Student Event</h3>
-      <p>
-        Satu kegiatan luar ruang dipindahkan setelah cuaca tidak
-        memungkinkan acara berlangsung.
-      </p>
-      <div class="meta">7 Aug 2026</div>
-    </article>
-
-    <article class="article neutral">
-      <span class="badge neutral">International</span>
-      <h3>Culture Week Registration Reaches New Fictional Record</h3>
-      <p>
-        Organisasi mahasiswa melaporkan antusiasme tinggi dari peserta
-        lokal dan internasional.
-      </p>
-      <div class="meta">6 Aug 2026</div>
-    </article>
-
-  </div>
-
-</section>
-
-
-<section id="admissions">
-
-  <div class="head">
-    <h2>Admissions</h2>
-    <span>Every 20 July</span>
-  </div>
-
-  <div class="admissions">
-
-    <div class="admit">
-
-      <span class="tag">
-        Annual Admissions Promotion
-      </span>
-
-      <h3>New Student Registration</h3>
-
-      <p>
-        Setiap tanggal <b>20 Juli</b>, UÁ menerbitkan paket informasi
-        pendaftaran tahunan beserta jalur dan persyaratannya.
-      </p>
-
-      <ul>
-        <li>Formulir pendaftaran resmi UÁ</li>
-        <li>Dokumen kelulusan</li>
-        <li>Catatan akademik atau prestasi</li>
-        <li>Persyaratan jalur yang dipilih</li>
-      </ul>
-
-    </div>
-
-    <div class="gold">
-
-      <h3>Annual Admissions Day</h3>
-
-      <strong>20 JUL</strong>
-
-      <p>
-        Promosi pendaftaran tahunan UÁ dalam lore universitas.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="calendar">
-
-  <div class="head">
-    <h2>Signature Calendar</h2>
-    <span>UÁ annual cycle</span>
-  </div>
-
-  <div class="calendar">
-
-    <div class="date">
-      <b>18 MAR</b>
-      <span>
-        Annual 23-Language Examination begins.
-      </span>
-    </div>
-
-    <div class="date">
-      <b>18 MAR–18 APR</b>
-      <span>
-        One-month examination period.
-      </span>
-    </div>
-
-    <div class="date">
-      <b>20 JUL</b>
-      <span>
-        Annual Admissions Promotion.
-      </span>
-    </div>
-
-    <div class="date">
-      <b>7 SEP</b>
-      <span>
-        UÁ Anniversary Games — major inter-university
-        competitions celebrating the anniversary of
-        University of Averiá.
-      </span>
-    </div>
-
-  </div>
-
-
-  <div class="event">
-
-    <span class="ey">
-      ANNUAL SIGNATURE EVENT · 7 SEPTEMBER
-    </span>
-
-    <h3>
-      UÁ Anniversary Games
-    </h3>
-
-    <p>
-      Kompetisi besar antar-kampus untuk merayakan ulang tahun
-      <strong>University of Averiá (UÁ)</strong>, mempertemukan
-      mahasiswa dalam berbagai lomba dan pertandingan.
-    </p>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  <div class="foot">
-
-    <div>
-      <h3>University of Averiá</h3>
-
-      <p>
-        UÁ Central Administration · The Averiá Chronicle ·
-        Student Affairs
-      </p>
-    </div>
-
-    <div>
-
-      <h3>Explore</h3>
-
-      <ul>
-        <li><a href="#news">Latest News</a></li>
-        <li><a href="#campus">Campus Stories</a></li>
-        <li><a href="#admissions">Admissions</a></li>
-      </ul>
-
-    </div>
-
-    <div>
-
-      <h3>Identity</h3>
-
-      <ul>
-        <li>Knowledge</li>
-        <li>Character</li>
-        <li>Excellence</li>
-      </ul>
-
-    </div>
-
-  </div>
-
-  <div class="disc">
-    Fictional / in-universe university website.
-    Not an actual accredited institution.
-  </div>
-
-</footer>
-
-
-<script>
-
-const feedEl = document.getElementById("feed");
-const clockEl = document.getElementById("clock");
-const dateEl = document.getElementById("date");
-const tickerEl = document.getElementById("ticker");
-
-
-const stories = [
-
-  [
-    "21:14",
-    "UÁ Facilities Office confirms the Royal Green Garden is open again.",
-    "Campus"
-  ],
-
-  [
-    "21:03",
-    "Students prepare for the next academic briefing on the 23-language examination.",
-    "Academic"
-  ],
-
-  [
-    "20:52",
-    "Library night-study hours remain extended during examination season.",
-    "Library"
-  ],
-
-  [
-    "20:41",
-    "A student outdoor event is moved after an unexpected weather interruption.",
-    "Student Affairs"
-  ],
-
-  [
-    "20:29",
-    "International Culture Week registration passes a new fictional milestone.",
-    "International"
-  ],
-
-  [
-    "20:16",
-    "UÁ publishes the latest campus facilities bulletin.",
-    "Administration"
-  ]
-
-];
-
-
-feedEl.innerHTML = stories.map(x => `
-  <div class="item">
-
-    <time>${x[0]}</time>
-
-    <div>
-
-      <strong>${x[1]}</strong>
-
-      <span>
-        ${x[2]} · UÁ Official News
-      </span>
-
-    </div>
-
-  </div>
-`).join("");
-
-
-function updateClock(){
-
-  const d = new Date();
-
-  clockEl.textContent =
-    d.toLocaleTimeString([],{
-      hour:"2-digit",
-      minute:"2-digit",
-      hour12:false
-    });
-
-  dateEl.textContent =
-    d.toLocaleDateString("en-GB",{
-      day:"2-digit",
-      month:"short",
-      year:"numeric"
-    });
-
-}
-
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-
-let tickerIndex = 0;
-
-
-function updateTicker(){
-
-  tickerIndex =
-    (tickerIndex + 1) % stories.length;
-
-  tickerEl.textContent =
-    stories[tickerIndex][1] +
-    " · " +
-    stories[tickerIndex][2];
-
-}
-
-
-setInterval(updateTicker,60000);
-
-
-/* =====================================
-   UÁ MOBILE MENU
-   ===================================== */
-
-const menuToggle =
-  document.getElementById("menuToggle");
-
-const mobileMenu =
-  document.getElementById("mobileMenu");
-
-
-function closeMenu(){
-
-  mobileMenu.classList.remove("open");
-
-  menuToggle.classList.remove("active");
-
-  menuToggle.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
-  menuToggle.setAttribute(
-    "aria-label",
-    "Open menu"
-  );
-
-  mobileMenu.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  document.body.classList.remove(
-    "menu-open"
-  );
-
-}
-
-
-menuToggle.addEventListener("click",()=>{
-
-  const opened =
-    !mobileMenu.classList.contains("open");
-
-
-  if(opened){
-
-    mobileMenu.classList.add("open");
-
-    menuToggle.classList.add("active");
-
-    menuToggle.setAttribute(
-      "aria-expanded",
-      "true"
-    );
-
-    menuToggle.setAttribute(
-      "aria-label",
-      "Close menu"
-    );
-
-    mobileMenu.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-    document.body.classList.add(
-      "menu-open"
-    );
-
-  }else{
-
-    closeMenu();
-
-  }
-
-});
-
-
-mobileMenu
-  .querySelectorAll("a")
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      closeMenu
-    );
-
-  });
-
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if(event.key === "Escape"){
-      closeMenu();
-    }
-
-  }
-);
-
-
-document.addEventListener(
-  "click",
-  event => {
-
-    if(
-      mobileMenu.classList.contains("open") &&
-      !mobileMenu.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ){
-
-      closeMenu();
-
-    }
-
-  }
-);
-
-</script>
-
-</body>
-</html>
+    <div class="stories">
+      <article class="card reveal" style="transition-delay: 0.1s;">
+        <div class="visual featureVisual"><img src="campus-garden.svg" alt="Stylized Royal Green Garden"></div>
+       
